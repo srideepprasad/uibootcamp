@@ -1,0 +1,112 @@
+body {
+  background: #ffffff;
+}
+body .pptbox,
+body .sldbox {
+  border: solid 1px #ccc;
+  background: #eee;
+  height: 200px;
+  position: relative;
+}
+body .pptbox .presentation,
+body .sldbox .presentation,
+body .pptbox .slide,
+body .sldbox .slide {
+  background: white;
+  height: 180px;
+  top: 0;
+  bottom: 0;
+  width: 90%;
+  margin: 10px;
+  border: solid 1px #aaaaaa;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+body .pptbox .presentation:hover .control,
+body .sldbox .presentation:hover .control,
+body .pptbox .slide:hover .control,
+body .sldbox .slide:hover .control {
+  bottom: 0;
+}
+body .pptbox .presentation,
+body .sldbox .presentation {
+  position: relative;
+  overflow: hidden;
+}
+body .pptbox .presentation .title,
+body .sldbox .presentation .title,
+body .pptbox .presentation .desc,
+body .sldbox .presentation .desc {
+  text-align: center;
+}
+body .pptbox .presentation .title,
+body .sldbox .presentation .title {
+  font-size: 18px;
+  padding-top: 70px;
+}
+body .pptbox .presentation .desc,
+body .sldbox .presentation .desc {
+  font-style: italic;
+}
+body .pptbox .slide,
+body .sldbox .slide {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+}
+body .pptbox .slide h1,
+body .sldbox .slide h1 {
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  padding-top: 50%;
+  line-height: 16px;
+  margin-top: -16px;
+}
+body .pptbox .slides,
+body .sldbox .slides {
+  white-space: nowrap;
+  overflow-x: auto;
+}
+body .control {
+  position: absolute;
+  bottom: -40px;
+  border-top: solid 1px #dddddd;
+  width: 100%;
+}
+body .control .icon {
+  display: block;
+  float: right;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+body .control .icon:hover {
+  background: #efefef;
+}
+body .sldbox:before {
+  position: absolute;
+  top: 50%;
+  content: '';
+  display: block;
+  border: solid 30px #eeeeee;
+  left: -60px;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  margin-top: -30px;
+}
+body form textarea {
+  width: 98%;
+}
+body .modal.container {
+  margin-left: -585px;
+}
+body ul,
+body ol {
+  margin: 0;
+}
+body li {
+  list-style: none;
+}

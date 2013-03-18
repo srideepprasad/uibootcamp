@@ -1,0 +1,183 @@
+
+<html>
+<head>
+
+  <title>Presentation Index</title>
+
+  <link media="screen" rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+  <link media="screen" rel="stylesheet" type="text/css" href="./css/bootstrap-responsive.css">
+  <link media="screen" rel="stylesheet" type="text/css" href="./css/application.css">
+
+
+</head>
+<body>
+
+
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container"><a href="#" class="brand">Markup Presentation</a></div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <ul class="nav navbar-static-top">
+        <li>
+          <a href="#addPresentationDialog" title="Create a new presentation" data-toggle="modal" role="button">
+            <i class="icon-plus"></i>New presentation
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="span12"><h2>Available Presentations</h2></div>
+  </div>
+  <ul id="presentationContainer"></ul>
+
+
+  <div id="addPresentationDialog" role="dialog" aria-labelledby="addPresentationDialogLabel" aria-hidden="true"
+       class="modal hide fade">
+    <form id="newPresentation" action="#" class="form-horizontal">
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">X</button>
+        <h3>Create New Presentation</h3></div>
+      <div class="modal-body">
+        <div class="control-group"><label for="name" class="control-label">Name</label>
+
+          <div class="controls"><input id="name" type="text" name="name"></div>
+        </div>
+        <div class="control-group"><label for="description" class="control-label">Description</label>
+
+          <div class="controls"><input id="description" type="text" name="description"></div>
+        </div>
+      </div>
+      <div class="modal-footer"><a href="#" data-dismiss="modal" class="btn">Cancel</a>
+        <button type="submit" class="btn btn-primary">
+          <create>Presentation</create>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div id="addSlideDialog" role="dialog" aria-labelledby="addSlideDialogLabel" aria-hidden="true"
+       class="modal hide fade">
+    <form id="newSlide" action="#" class="form-vertical">
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+        <h3>Add New Slide</h3></div>
+      <div class="modal-body">
+        <div class="control-group"><label for="markup" class="control-label">Markup</label>
+
+          <div class="controls"><textarea id="markup" rows="10" name="markup"></textarea></div>
+        </div>
+      </div>
+      <div class="modal-footer"><a href="#" data-dismiss="modal" class="btn">Cancel</a><a href="#"
+                                                                                          class="btn btn-primary">Add
+        Slide</a></div>
+    </form>
+  </div>
+  <div id="playPresentationDialog" role="dialog" aria-labelledby="playPresentationDialogLabel" aria-hidden="true"
+       class="container modal hide fade">
+    <div class="modal-header">
+      <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+      <h3>Play Presentation</h3></div>
+    <div class="modal-body">
+      <div id="myCarousel" class="carousel slide">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="active item">
+            <div>content 1</div>
+          </div>
+          <div class="item">
+            <div>content 2</div>
+          </div>
+          <div class="item">
+            <div>content 3</div>
+          </div>
+        </div>
+        <a href="#playPresentationDialog" data-slide="prev" class="carousel-control left">‹</a><a
+          href="#playPresentationDialog" data-slide="next" class="carousel-control right">›</a></div>
+    </div>
+    <div class="modal-footer"><a href="#" data-dismiss="modal" class="btn">Cancel</a></div>
+  </div>
+  <script id="presentationTemplate" type="text/html">
+    <li class="row">
+      <div class="span3">
+        <div id="presentationsBox" class="pptbox">
+          <div class="presentation">
+            <div class="title"><%= title %></div>
+            <div class="desc"><%= description %></div>
+            <div class="control">
+              <a href="#" title="Remove the presentation" class="icon">
+                <i class="icon-trash">
+              &nbsp;</i></a>
+              <a href="#playPresentationDialog" title="Play the presentation" data-toggle="modal"
+                               class="icon"> <i class="icon-play">&nbsp;</i></a>
+              <a href="#addSlideDialog" title="Add a slide in presentation" data-toggle="modal" class="icon"> <i
+                class="icon-plus">&nbsp;</i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span9">
+        <div class="sldbox">
+          <ul class="slides"></ul>
+        </div>
+      </div>
+    </li>
+  </script>
+  <script id="slideTemplate" type="text/html">
+    <li class="slide"><h1>#<%= counter %></h1>
+      <div class="control"><a href="#" title="Remove the presentation" class="icon"><i class="icon-trash">&nbsp;</i></a>
+      </div>
+    </li>
+  </script>
+  <ul id="presentationContainer">
+    <li class="row">
+      <div class="span3">
+        <div id="presentationsBox" class="pptbox">
+          <div class="presentation">
+            <div class="title">Presentation</div>
+            <div class="desc">Description</div>
+            <div class="control">
+              <a href="#" title="Remove the presentation" class="icon trash">
+                <i class="icon-trash">&nbsp;</i></a>
+              <a href="#" title="Add a slide in presentation" class="icon plus">
+                <i class="icon-plus">&nbsp;</i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span9">
+        <div class="sldbox">
+          <ul class="slides">
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <hr>
+  <footer><p>@ UI Bootcamp - III (2013)</p></footer>
+</div>
+<div id="window-resizer-tooltip" style="display: none;"><a href="#" title="Edit settings"
+                                                           style="background-image: url(chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/images/icon_19.png);"></a><span
+    class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1242</span> x <span
+    class="tooltipHeight" id="winHeight">878</span><br><span class="tooltipTitle">Viewport size: </span><span
+    class="tooltipWidth" id="vpWidth">1242</span> x <span class="tooltipHeight" id="vpHeight">451</span></div>
+<script src="lib/jquery-1.9.1.min.js"></script>
+
+<script src="js/bootstrap.js"></script>
+<script src="lib/underscore.js"></script>
+
+</body>
+</html>
