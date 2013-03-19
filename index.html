@@ -8,46 +8,7 @@
   <link media="screen" rel="stylesheet" type="text/css" href="./css/bootstrap-responsive.css">
   <link media="screen" rel="stylesheet" type="text/css" href="./css/application.css">
 
-  <script type="text/javascript">
-  //Move to a script file
-    
-    function Presentation(title, description){
-      this.title=  title;
-      this.description = description;
-    }
-
-    
-    function Presentations(){
-      var presentationList = [];
-
-      this.add = function(presentation){
-        presentationList.push (presentation);
-      }
-
-      this.getPresentations = function(){
-        return presentationList;
-      }
-
-    }
-
-
-    var presentations = new Presentations();
-
-    function onSubmitAction(form){
-
-      var name = form.name.value;
-      var desc = form.description.value;
-      var presentation = new Presentation(name, desc);
-      presentations.add (presentation);
-      $("ul#presentationContainer").append(_.template($("#presentationTemplate").html(), presentation));
-      $("div#addPresentationDialog").modal('hide');
-      return false;
-    }
-
-   
-
-  </script>
-
+  
 </head>
 <body>
 
@@ -81,7 +42,7 @@
 
   <div id="addPresentationDialog" role="dialog" aria-labelledby="addPresentationDialogLabel" aria-hidden="true"
        class="modal hide fade">
-    <form id="newPresentation" action="#"  onSubmit="javascript: return onSubmitAction(this);" class="form-horizontal">
+    <form id="newPresentation" action="#"  class="form-horizontal">
       <div class="modal-header">
         <button type="button" data-dismiss="modal" aria-hidden="true" class="close">X</button>
         <h3>Create New Presentation</h3></div>
@@ -105,9 +66,9 @@
 
   <div id="addSlideDialog" role="dialog" aria-labelledby="addSlideDialogLabel" aria-hidden="true"
        class="modal hide fade">
-    <form id="newSlide" action="#" class="form-vertical">
+    <form id="newSlide" action="#" class="form-vertical" >
       <div class="modal-header">
-        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+        <button type="submit" data-dismiss="modal" aria-hidden="true" class="close" >×</button>
         <h3>Add New Slide</h3></div>
       <div class="modal-body">
         <div class="control-group"><label for="markup" class="control-label">Markup</label>
@@ -149,7 +110,7 @@
     <div class="modal-footer"><a href="#" data-dismiss="modal" class="btn">Cancel</a></div>
   </div>
   <script id="presentationTemplate" type="text/html">
-    <li class="row">
+    <li class="row" id-attr="<%= id %>">
       <div class="span3">
         <div id="presentationsBox" class="pptbox">
           <div class="presentation">
@@ -161,7 +122,8 @@
               &nbsp;</i></a>
               <a href="#playPresentationDialog" title="Play the presentation" data-toggle="modal"
                                class="icon"> <i class="icon-play">&nbsp;</i></a>
-              <a href="#addSlideDialog" title="Add a slide in presentation" data-toggle="modal" class="icon"> <i
+              <a href="#addSlideDialog" title="Add a slide in presentation" data-toggle="modal" class="icon" id="addSlideBtn" 
+                presentationId="<%= id %>"> <i
                 class="icon-plus">&nbsp;</i></a>
             </div>
           </div>
@@ -175,7 +137,7 @@
     </li>
   </script>
   <script id="slideTemplate" type="text/html">
-    <li class="slide"><h1>#<%= counter %></h1>
+    <li class="slide"><h1>#<%= markup %></h1>
       <div class="control"><a href="#" title="Remove the presentation" class="icon"><i class="icon-trash">&nbsp;</i></a>
       </div>
     </li>
@@ -192,6 +154,12 @@
 
 <script src="js/bootstrap.js"></script>
 <script src="lib/underscore.js"></script>
+<script src="js/models/slide.js" ></script>
+<script src="js/models/presentation.js" ></script>
+<script src="js/views/PresentationView.js" ></script>
+<script src="js/views/SlideView.js" ></script>
+
+<script src="js/app.js" ></script>
 
 </body>
 </html>
