@@ -1,3 +1,3 @@
     function Slide(content){
-      this.content = content;
+      this.markup = content;
     }
