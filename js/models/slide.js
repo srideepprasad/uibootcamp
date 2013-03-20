@@ -1,3 +1,4 @@
     function Slide(content){
-      this.markup = content;
+    	this.id = new Date().getTime();
+		this.markup = content;
     }

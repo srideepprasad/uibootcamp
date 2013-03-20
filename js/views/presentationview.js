@@ -19,17 +19,14 @@ function PresentationView(presentationModel){
 		}
 	}
 
-	var slideAddedCallback = function(content){
+	var slideAddedCallback = function(event,content){
 		var slideModel = new Slide(content);
 		initSlideView(slideModel);
 	}
 
-	var slideCancelCallback = function(){
-		alert('cancelled');
-	}
 
 	var addSlideHandler = function(){
-		new AddSlideDialogView(slideAddedCallback, slideCancelCallback);
+		new AddSlideDialogView(presentationElement);
 	}
 
 	this.render = function(){
@@ -37,8 +34,8 @@ function PresentationView(presentationModel){
 		presentationElement = $("li.row[id-attr="+presentationModel.id+"]")
 		
 		presentationElement.find("#addSlideBtn").bind('click', addSlideHandler);
-		
-		renderSlides(presentationElement);
+		presentationElement.on('slideAdded', slideAddedCallback);		
+		renderSlides();
 		//presentationElement.find(".slides").append(_.template($("#slideTemplate").html(),{counter: 1}))
  
 	}

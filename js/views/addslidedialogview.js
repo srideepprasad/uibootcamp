@@ -1,4 +1,4 @@
-function AddSlideDialogView(onAddCallback, onCancelCallback){
+function AddSlideDialogView(presentationParentElement){
 	var dialogBox = $("div#addSlideDialog");
 
 	var addSlideForm = $("#newSlide");
@@ -9,14 +9,13 @@ function AddSlideDialogView(onAddCallback, onCancelCallback){
 
 	var successCallbackDispatcher = function(){
 		dialogBox.modal('hide');
+		presentationParentElement.trigger('slideAdded', contentBox.val());
 		detachEventHandlers();
-		onAddCallback(contentBox.val());
 	}
 
 	var cancelCallbackDispatcher = function(){
 		dialogBox.modal('hide');
 		detachEventHandlers();
-		onCancelCallback();
 	}
 
 	var detachEventHandlers = function(){

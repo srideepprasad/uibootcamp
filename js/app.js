@@ -3,6 +3,6 @@
 
 
 
-   var app = new ApplicationView();
+   var app = ApplicationView.getInstance();
    app.init();
 
